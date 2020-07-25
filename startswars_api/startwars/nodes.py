@@ -1,9 +1,9 @@
 from graphene import relay
-from graphene_django import DjangoObjecType
+from graphene_django import DjangoObjectType
 
 from .models import Peliculas, Personajes, Planetas, Persopelis, Planetaspelis
 
-class PeliculasNode(DjangoObjecType):
+class PeliculasNode(DjangoObjectType):
     class Meta:
         model = Peliculas
         interfaces = (relay.Node, )
@@ -13,7 +13,7 @@ class PeliculasNode(DjangoObjecType):
             'directorpl': ['exact', 'icontains', 'istartswith']
         }
 
-class PlanetasNode(DjangoObjecType):
+class PlanetasNode(DjangoObjectType):
     class Meta:
         model = Planetas
         interfaces = (relay.Node, )
@@ -22,7 +22,7 @@ class PlanetasNode(DjangoObjecType):
             'nombrePla': ['exact', 'icontains', 'istartswith']
         }
 
-class PersonajesNode(DjangoObjecType):
+class PersonajesNode(DjangoObjectType):
     class Meta:
         model = Personajes
         interfaces = (relay.Node, )
@@ -31,7 +31,7 @@ class PersonajesNode(DjangoObjecType):
             'nombrepj': ['exact', 'icontains', 'istartswith']
         }
 
-class PersopelisNode(DjangoObjecType):
+class PersopelisNode(DjangoObjectType):
     class Meta:
         model = Persopelis
         interfaces = (relay.Node, )
@@ -40,7 +40,7 @@ class PersopelisNode(DjangoObjecType):
             'idper': ['exact', 'gt', 'gte', 'lt', 'lte']
         }
 
-class PlanetaspelisNode(DjangoObjecType):
+class PlanetaspelisNode(DjangoObjectType):
     class Meta:
         model = Planetaspelis
         interfaces = (relay.Node, )
