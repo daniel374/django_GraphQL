@@ -19,6 +19,8 @@ class Personajes(models.Model):
     idpj = models.AutoField(db_column='idPj', primary_key=True)  # Field name made lowercase.
     nombrepj = models.CharField(db_column='nombrePj', max_length=45)  # Field name made lowercase.
 
+    def __str__(self):
+        return self.nombrepj
     class Meta:
         managed = False
         db_table = 'personajes'

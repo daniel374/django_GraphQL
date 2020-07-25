@@ -24,15 +24,17 @@ class Query(ObjectType):
     planepeli = relay.Node.Field(PlanetaspelisNode)
     planepelis = DjangoFilterConnectionField(PlanetaspelisNode)
 
-    """
-    def res_pelicula(self, info, **kwargs):
-        id = kwargs.get('idpl')
+    personaj = graphene.Field(PersonajesNode, idpj=graphene.Int())
 
-        if id is not None:
-            return Pelicula.objects.get(pk=id)
+    
+    def result_personaje(self, info, **kwargs):
+        idpj = kwargs.get('idpj')
+
+        if idpj is not None:
+            return Personajes.objects.get(pk=idpj)
         
         return None
-    """
+    
 
 
 """
