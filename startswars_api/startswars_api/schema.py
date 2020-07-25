@@ -1,4 +1,4 @@
-from graphene
+import graphene
 from graphene_django.debug import DjangoDebug
 
 import startwars.schema
