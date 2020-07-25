@@ -1,0 +1,2 @@
+-- seleciona las peliculas en las que participa el personaje
+select nombrePj, nombrePl, productoresPl, directorPl, planetasPl, detallePl from persopelis perspel left join personajes pers on perspel.idper = pers.idPj left join peliculas pel on pel.idPl = perspel.idpeli where perspel.idper = 21;
