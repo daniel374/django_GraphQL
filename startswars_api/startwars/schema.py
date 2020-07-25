@@ -1,6 +1,9 @@
-from graphene import relay, ObjectType, Field
+import graphene
+from graphene import relay, ObjectType, Field, InputObjectType
 from graphene_django.debug import DjangoDebug
 from graphene_django.filter import DjangoFilterConnectionField
+
+from .models import Planetas
 
 from .nodes import PeliculasNode, PlanetasNode, PersonajesNode, PersopelisNode, PlanetaspelisNode
 
@@ -21,5 +24,40 @@ class Query(ObjectType):
     planepeli = relay.Node.Field(PlanetaspelisNode)
     planepelis = DjangoFilterConnectionField(PlanetaspelisNode)
 
+    """
+    def res_pelicula(self, info, **kwargs):
+        id = kwargs.get('idpl')
+
+        if id is not None:
+            return Pelicula.objects.get(pk=id)
+        
+        return None
+    """
+
+
+"""
+    Construyendo las mutations
+"""
+
+class PlanetaInput(graphene.InputObjectType):
+    idPla = graphene.ID()
+    nombrePla = graphene.String()
+
+class CreatePlaneta(graphene.Mutation):
+    class Arguments:
+        input = PlanetaInput(required=True)
+
+    ok = graphene.Boolean()
+    planeta = graphene.Field(PlanetasNode)
+
+    @staticmethod
+    def mutate(root, info, input=None):
+        ok = True
+        planeta_instance = Planetas(nombrePla=input.nombrePla)
+        planeta_instance.save()
+        return CreatePlaneta(ok=ok, planeta=planeta_instance)
+
+
 class Mutation(ObjectType):
-    pass
+    create_planeta = CreatePlaneta.Field()
+    
