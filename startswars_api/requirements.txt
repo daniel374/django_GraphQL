@@ -16,7 +16,7 @@ parso==0.7.0
 pickleshare==0.7.5
 promise==2.3
 prompt-toolkit==3.0.5
-Pygments==2.6.1
+Pygments==2.7.4
 PyMySQL==0.10.0
 pytz==2020.1
 Rx==1.6.1
