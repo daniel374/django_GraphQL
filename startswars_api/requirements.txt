@@ -2,7 +2,7 @@ aniso8601==7.0.0
 backcall==0.2.0
 colorama==0.4.3
 decorator==4.4.2
-Django==2.2
+Django==2.2.21
 django-extensions==3.0.3
 django-filter==2.3.0
 graphene==2.1.8
